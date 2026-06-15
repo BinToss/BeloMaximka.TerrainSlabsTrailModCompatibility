@@ -1,0 +1,31 @@
+[
+  {
+    dependsOn: [ { modid: "trailmod" } ],
+    file: "terrainslabs:blocktypes/trail.json",
+    path: "/",
+    op: "AddMerge",
+    value: {
+      inheritFrom: "trailmod:blocktypes/trail.json",
+      textures: {
+        snowed: { base: "trailmod:block/trail/snow/normal" },
+        specialSecondTexture: {
+          base: "trailmod:block/trail/trailwear/wear{trailwear}"
+        }
+      }
+    }
+  },
+  {
+    dependsOn: [ { modid: "trailmod" } ],
+    file: "terrainslabs:blocktypes/trail.json",
+    path: "/texturesInventory/horizontals/overlays/0",
+    op: "Replace",
+    value: "trailmod:block/trail/trailwear/inventory/side_{trailwear}"
+  },
+  {
+    dependsOn: [ { modid: "trailmod" } ],
+    file: "terrainslabs:blocktypes/trail.json",
+    path: "/texturesInventory/up/overlays/0",
+    op: "Replace",
+    value: "trailmod:block/trail/trailwear/inventory/top_{trailwear}"
+  },
+]
