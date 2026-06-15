@@ -1,96 +1,38 @@
 {
-  "code": "trail",
-  "class": "BlockTrailSlab",
-  "variantgroups": [
-    {
-      "code": "domain",
-      "states": ["trailmodupdated"]
-    },
-    { "loadFromProperties": "abstract/fertility" },
-    {
-      "code": "trailwear",
-      "states": ["new", "established", "veryestablished", "old"]
-    }
-  ],
-  "behaviors": [{ "name": "NameFromFullBlock" }],
-  "creativeinventory": { "general": ["*"], "flora": ["*"], "terrain": ["*"] },
-  "shape": { "base": "game:block/basic/slab/slab-down" },
-  "drawtypeByType": { "*-none": "Cube", "*": "TopSoil" },
-  "renderpassByType": { "*-none": "Opaque", "*": "TopSoil" },
-  "blockmaterial": "Soil",
-  "textures": {
-    "all": { "base": "game:block/soil/fert{fertility}" },
-    "snowed": { "base": "trailmodupdated:block/trail/snow/normal" },
-    "specialSecondTexture": {
-      "base": "trailmodupdated:block/trail/trailwear/wear{trailwear}"
+  inheritFrom: "trailmodupdated:blocktypes/trail.json",
+  class: "BlockTrailSlab",
+  behaviors: [ { name: "NameFromFullBlock" } ],
+  shape: { base: "game:block/basic/slab/slab-down" },
+  textures: {
+    snowed: { base: "trailmodupdated:block/trail/snow/normal" },
+    specialSecondTexture: {
+      base: "trailmodupdated:block/trail/trailwear/wear{trailwear}"
     }
   },
-  "attributes": { "mapColorCode": "land", "ignoreTintInventory": true },
-  "texturesInventory": {
-    "down": { "base": "game:block/soil/fert{fertility}" },
-    "horizontals": {
-      "base": "game:block/soil/fert{fertility}",
-      "overlays": [
+  texturesInventory: {
+    down: { base: "game:block/soil/fert{fertility}" },
+    horizontals: {
+      base: "game:block/soil/fert{fertility}",
+      overlays: [
         "trailmodupdated:block/trail/trailwear/inventory/side_{trailwear}"
       ]
     },
-    "up": {
-      "base": "game:block/soil/fert{fertility}",
-      "overlays": [
+    up: {
+      overlays: [
         "trailmodupdated:block/trail/trailwear/inventory/top_{trailwear}"
       ]
     }
   },
-  "walkspeedmultiplierByType": {
-    "*-new": 1.1,
-    "*-established": 1.15,
-    "*-veryestablished": 1.2,
-    "*-old": 1.25
+  faceCullMode: "FlushExceptTop",
+  sideOpaque: {
+    all: false,
+    down: true
   },
-  "snowCoverage": true,
-  "frostableByType": { "*-pretrail": false, "*": true },
-  "replaceable": 400,
-  "fertility": 100,
-  "resistance": 1.5,
-  "faceCullMode": "FlushExceptTop",
-  "sideOpaque": {
-    "all": false,
-    "down": true
+  sideSolid: {
+    all: false,
+    down: true
   },
-  "sideSolid": {
-    "all": false,
-    "down": true
-  },
-  "emitSideAo": { "all": false },
-  "selectionbox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.5, "z2": 1 },
-  "collisionbox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.5, "z2": 1 },
-  "soundsByType": {
-    "*-pretrail": {
-      "place": "game:block/dirt",
-      "break": "game:block/dirt",
-      "hit": "game:block/dirt",
-      "walk": "game:walk/grass"
-    },
-    "*": {
-      "place": "game:block/dirt",
-      "break": "game:block/dirt",
-      "hit": "game:block/dirt",
-      "walk": "game:walk/gravel"
-    }
-  },
-  "drops": [
-    {
-      "type": "block",
-      "code": "game:soil-{fertility}-none",
-      "quantity": { "avg": 1, "var": 0 }
-    }
-  ],
-  "heldTpIdleAnimation": "holdbothhandslarge",
-  "heldRightReadyAnimation": "heldblockready",
-  "heldTpUseAnimation": "twohandplaceblock",
-  "tpHandTransform": {
-    "translation": { "x": -1.23, "y": -0.91, "z": -0.8 },
-    "rotation": { "x": -2, "y": 25, "z": -78 },
-    "scale": 0.4
-  }
+  emitSideAo: { all: false },
+  selectionbox: { y2: 0.5 },
+  collisionbox: { y2: 0.5 }
 }
