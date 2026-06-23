@@ -46,13 +46,13 @@ public static class TrailModPatch
             $"{transformBlockAsset.Path.AsSpan(0, pos)}-{transformBlockAsset.Domain}{transformBlockAsset.Path.AsSpan(pos)}";
         transformBlockAsset.Domain = "terrainslabs";
 
-        Block block = world.GetBlock(newBlockAsset);
+        Block? block = world.GetBlock(newBlockAsset);
         if (block is null)
         {
             world.Logger.Warning("[{0}] Unable to get block with code {1}", modPrefix, newBlockAsset);
             return;
         }
-        Block transformBlock = world.GetBlock(transformBlockAsset);
+        Block? transformBlock = world.GetBlock(transformBlockAsset);
         if (transformBlock is null)
         {
             world.Logger.Warning("[{0}] Unable to get transform block with code {1}", modPrefix, transformBlockAsset);
