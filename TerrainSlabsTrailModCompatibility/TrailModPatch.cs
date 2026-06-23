@@ -22,6 +22,8 @@ public static class TrailModPatch
         bool transformByPlayerOnly
     )
     {
+        if (__instance.worldAccessor == null) return;
+
         IWorldAccessor world = __instance.worldAccessor;
         AssetLocation newBlockAsset = new(__instance.worldAccessor.Blocks[blockID].Code);
         int pos = newBlockAsset.Path.IndexOf('-');
