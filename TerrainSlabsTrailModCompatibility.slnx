@@ -1,7 +1,4 @@
 <Solution>
-  <Project Path="TerrainSlabs/PlaceOnSlabs/PlaceOnSlabs/PlaceOnSlabs.csproj" />
-  <Project Path="TerrainSlabs/TerrainSlabs/TerrainSlabs.csproj" />
   <Project Path="TerrainSlabsTrailModCompatibility/TerrainSlabsTrailModCompatibility.csproj" />
-  <Project Path="trailmodupdated/TrailModUpdated/TrailModUpdated.csproj" />
   <Project Path="ZZCakeBuild/CakeBuild.csproj" />
 </Solution>
