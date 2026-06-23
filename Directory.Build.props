@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <!-- For referencing mods' DLLs instead of their projects -->
+    <ModsDirectory>$([System.IO.Path]::Combine("$(MSBuildThisFileDirectory)", '.mods'))</ModsDirectory>
+    <ModTerrainSlabsDirectory>$(ModsDirectory)/terrainslabs</ModTerrainSlabsDirectory>
+    <ModTerrainSlabsModInfo>$(ModTerrainSlabsDirectory)/modinfo.json</ModTerrainSlabsModInfo>
+    <ModTerrainSlabsDll>$(ModTerrainSlabsDirectory)/TerrainSlabs.dll</ModTerrainSlabsDll>
+    <ModTerrainSlabsVersion>0.0.0</ModTerrainSlabsVersion>
+  </PropertyGroup>
+</Project>

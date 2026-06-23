@@ -1,0 +1,38 @@
+
+<Project>
+  <Import Condition="'$(ModTerrainSlabsModInfo)' == ''" Project="$(MSBuildThisFileDirectory)/Directory.Build.props"/>
+
+  <!-- Set IsCsprojVersionGreaterOrEqual _BEFORE_ project-restore! -->
+  <Target Name="SetIsCsprojVersionGreaterOrEqual" BeforeTargets="Restore" DependsOnTargets="SetModTerrainSlabVersion;SetCsprojTerrainSlabVersion">
+    <PropertyGroup>
+      <IsCsprojVersionGreaterOrEqual>$([MSBuild]::VersionGreaterThanOrEquals("$(CsprojTerrainSlabsVersion)", "$(ModTerrainSlabsVersion)"))</IsCsprojVersionGreaterOrEqual>
+    </PropertyGroup>
+  </Target>
+
+  <!-- Extract the unpacked TerrainSlabs version to $(ModTerrainSlabsVersion) -->
+  <Target Condition="Exists('$(ModTerrainSlabsModInfo)')"
+    Name="SetModTerrainSlabVersion">
+    <ReadLinesFromFile File="$(ModTerrainSlabsDirectory)/modinfo.json">
+      <Output
+        TaskParameter="Lines"
+        ItemName="ModTerrainSlabsModinfo" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <_modinfoVersionLine>@(ModTerrainSlabsModinfo)</_modinfoVersionLine>
+      <ModTerrainSlabsVersion >$([System.Text.RegularExpressions.Regex]::Match('$(_modinfoVersionLine)', '[0-9.]+(-[0-9.a-z]+)?'))</ModTerrainSlabsVersion>
+    </PropertyGroup>
+  </Target>
+
+  <!-- Extract from-source TerrainSlabs version to $(csprojTerrainSlabsVersion) -->
+  <Target Name="SetCsprojTerrainSlabVersion">
+    <ReadLinesFromFile File="$(MSBuildThisFileDirectory)/TerrainSlabs/TerrainSlabs/modinfo.json">
+      <Output
+        TaskParameter="Lines"
+        ItemName="CsprojTerrainSlabsModinfo" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <_modinfoVersionLine>@(CsprojTerrainSlabsModinfo)</_modinfoVersionLine>
+      <CsprojTerrainSlabsVersion>$([System.Text.RegularExpressions.Regex]::Match('$(_modinfoVersionLine)', '[0-9.]+(-[0-9.a-z]+)?'))</CsprojTerrainSlabsVersion>
+    </PropertyGroup>
+  </Target>
+</Project>

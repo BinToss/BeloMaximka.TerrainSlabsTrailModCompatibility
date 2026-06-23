@@ -1,0 +1,9 @@
+# If you need to develop with a later release than is available on GiHub (i.e. newer release on VSModDB),
+# then this directory should contain the following from that release:
+assets/
+.gitkeep
+modicon.png
+modinfo.json
+TerrainSlabs.deps.json
+TerrainSlabs.dll
+TerrainSlabs.pdb

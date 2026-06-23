@@ -42,8 +42,13 @@
     <Content Include="modinfo.json;modicon.png"
       CopyToOutputDirectory="PreserveNewest" />
 
-    <ProjectReference Include="..\TerrainSlabs\PlaceOnSlabs\PlaceOnSlabs\PlaceOnSlabs.csproj" Private="False" />
-    <ProjectReference Include="..\TerrainSlabs\TerrainSlabs\TerrainSlabs.csproj" Private="False" />
+    <!--  If IsCsprojVersionGreaterOrEqual, prefer -->
+    <Reference Condition="'$(IsCsprojVersionGreaterOrEqual)' != 'true'"
+      Include="TerrainSlabs.dll"
+      HintPath="$(ModTerrainSlabsDll)"
+      Private="False" />
+    <ProjectReference Condition="'$(IsCsprojVersionGreaterOrEqual)' == 'true'"
+      Include="..\TerrainSlabs\TerrainSlabs\TerrainSlabs.csproj" Private="False" />
     <ProjectReference Include="..\trailmodupdated\TrailModUpdated\TrailModUpdated.csproj" Private="False" />
   </ItemGroup>
 
